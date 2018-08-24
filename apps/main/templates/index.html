@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ninja Money</title>
+
+        <style>
+            .main {
+                width: 54%;
+                padding: 10px;
+            }
+
+            .row {
+                display: inline-flex;
+            }
+
+            .box {
+                border: 2px solid black;
+                width: 200px;
+                height: 200px;
+                text-align: center;
+                margin: 10px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="main">
+            <p>Your Gold: {{ request.session.countNum }}</p>
+
+            <div class="row">
+                <div class="box">
+                    <form action="/process_money" method="post">
+                        {% csrf_token %}
+                        <h2>Farm</h2>
+                        <p>(earns 10-20 golds)</p>
+                        <input type="hidden" name="building" value="farm">
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" value="Find Gold!">
+                    </form>  
+                </div>
+
+                <div class="box">
+                    <form action="/process_money" method="post">
+                        {% csrf_token %}
+                        <h2>Cave</h2>
+                        <p>(earns 5-10 golds)</p>
+                        <input type="hidden" name="building" value="cave">
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" value="Find Gold!">
+                    </form>                  
+                </div>
+
+                <div class="box">
+                    <form action="/process_money" method="post">
+                        {% csrf_token %}
+                        <h2>House</h2>
+                        <p>(earns 2-5 golds)</p>
+                        <input type="hidden" name="building" value="house">
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" value="Find Gold!">
+                    </form>  
+                </div>
+
+                <div class="box">
+                    <form action="/process_money" method="post">
+                        {% csrf_token %}
+                        <h2>Casino</h2>
+                        <p>(earns/takes 0-50 golds)</p>
+                        <input type="hidden" name="building" value="casino">
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" value="Find Gold!">
+                    </form>                  
+                </div>
+            </div>
+
+            <p>Activites:</p>
+            <textarea name="activityTxt" cols="120" rows="10">{{ request.session.activityTxt }}</textarea>
+
+        </div>
+    </body>
+</html>
